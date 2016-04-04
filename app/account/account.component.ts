@@ -2,16 +2,22 @@ import { Component } from 'angular2/core'
 import { RouteConfig, RouterOutlet } from 'angular2/router'
 
 import { IndexComponent } from './index/index.component'
+import { CreateComponent } from './create/create.component'
 
 @RouteConfig([
     {
-        name: 'AccountIndex',
+        name: 'Index',
         path: '/',
-        component: IndexComponent
-    }
+        component: IndexComponent,
+    },
+    {
+        name: 'Create',
+        path: 'create',
+        component: CreateComponent,
+    },
 ])
 @Component({
     templateUrl: 'app/account/account.component.html',
-    directives: [RouterOutlet]
+    directives: [RouterOutlet],
 })
 export class AccountComponent {}
