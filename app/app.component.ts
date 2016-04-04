@@ -8,6 +8,7 @@ import { AccountComponent } from './account/account.component'
         name: 'Account',
         path: '...',
         component: AccountComponent,
+        useAsDefault: true,
     },
 ])
 @Component({

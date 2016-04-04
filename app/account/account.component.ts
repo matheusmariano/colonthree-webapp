@@ -9,6 +9,7 @@ import { CreateComponent } from './create/create.component'
         name: 'Index',
         path: '/',
         component: IndexComponent,
+        useAsDefault: true,
     },
     {
         name: 'Create',
