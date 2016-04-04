@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core'
 
 @Component({
-    templateUrl: 'app/index/index.component.html',
+    templateUrl: 'app/account/index/index.component.html',
 })
 export class IndexComponent {}
