@@ -1,11 +1,7 @@
 import { Control } from 'angular2/common'
 
-export function validateEmail(control: Control) {
-    let pattern: RegExp = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i
+import { validateEmail } from './email/email.validator'
 
-    return pattern.test(control.value) ? null : {
-        ctEmail: {
-            valid: false,
-        },
-    }
+export module Validators {
+    export var email = validateEmail
 }

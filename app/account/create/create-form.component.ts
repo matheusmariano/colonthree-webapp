@@ -1,7 +1,7 @@
 import { Component, OnInit } from 'angular2/core'
 import { ControlGroup, FormBuilder, Validators } from 'angular2/common'
 
-import { validateEmail } from '../../core/validators/validators'
+import { Validators as CtValidators } from '../../core/validators/validators'
 
 @Component({
     selector: 'ct-create-form',
@@ -30,7 +30,7 @@ export class CreateFormComponent implements OnInit {
             email: ['', Validators.compose([
                 Validators.required,
                 Validators.maxLength(255),
-                validateEmail
+                CtValidators.email
             ])],
             password: ['', Validators.compose([
                 Validators.required,
