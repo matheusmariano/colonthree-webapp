@@ -10,17 +10,19 @@ export interface UniqueService {
 }
 
 export function validateUnique(service: UniqueService) {
-    return (control: Control): Promise<Unique> => {
+    return (control: Control): Promise<any> => {
         return new Promise((resolve) => {
             service.getUnique(control.value)
                 .subscribe((unique) => {
-                    let error = unique.available ? null : {
+                    resolve(unique.available ? null : {
                         ctUnique: {
                             available: false
                         }
-                    }
-                    
-                    resolve(error)
+                    })
+                }, (error) => {
+                    resolve({
+                        ctAsync: { error }
+                    })
                 })
         })
     }

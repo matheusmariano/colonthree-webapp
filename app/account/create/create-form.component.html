@@ -21,6 +21,7 @@
                 <li class="list-group-item text-danger" *ngIf="form.controls.username.errors?.pattern">Your username must contain only numbers and letters, without accent or space.</li>
                 <li class="list-group-item text-danger" *ngIf="form.controls.username.errors?.ctUnique">Your username is not available.</li>
                 <li class="list-group-item text-danger" *ngIf="form.controls.username.errors?.maxlength">Your username is too long.</li>
+                <li class="list-group-item text-danger" *ngIf="form.controls.username.errors?.ctAsync">Something went wrong on our server. Please, try again later.</li>
             </ul>
         </div>
     </div>
@@ -32,6 +33,7 @@
             <li class="list-group-item text-danger" *ngIf="form.controls.email.errors?.ctEmail">Your email is not valid.</li>
             <li class="list-group-item text-danger" *ngIf="form.controls.email.errors?.ctUnique">Your email is not available.</li>
             <li class="list-group-item text-danger" *ngIf="form.controls.email.errors?.maxlength">Your email is too long.</li>
+            <li class="list-group-item text-danger" *ngIf="form.controls.email.errors?.ctAsync">Something went wrong on our server. Please, try again later.</li>
         </ul>
     </div>
     <div class="form-group row" [ngClass]="{ 'has-success': form.controls.password.valid, 'has-danger': ! form.controls.password.valid && form.controls.password.dirty }">
