@@ -1,13 +1,13 @@
-<form [ngFormModel]="form" novalidate>
+<form [ngFormModel]="form" (ngSubmit)="submit()" novalidate>
     <div class="form-group row" [ngClass]="{ 'has-success': form.controls.name.valid, 'has-danger': ! form.controls.name.valid && form.controls.name.dirty }">
-        <input type="text" placeholder="Name" class="form-control" ngControl="name" [ngClass]="{ 'form-control-success': form.controls.name.valid, 'form-control-danger': ! form.controls.name.valid && form.controls.name.dirty }">
+        <input type="text" placeholder="Name" class="form-control" ngControl="name" [(ngModel)]="model.name" [ngClass]="{ 'form-control-success': form.controls.name.valid, 'form-control-danger': ! form.controls.name.valid && form.controls.name.dirty }">
         <ul class="list-group m-t-1" *ngIf="! form.controls.name.valid && form.controls.name.dirty">
             <li class="list-group-item text-danger" *ngIf="form.controls.name.errors?.required">You must provide your name.</li>
             <li class="list-group-item text-danger" *ngIf="form.controls.name.errors?.maxlength">Your name is too long.</li>
         </ul>
     </div>
     <div class="form-group row" [ngClass]="{ 'has-success': form.controls.username.valid, 'has-danger': ! form.controls.username.valid && form.controls.username.dirty && ! form.controls.username.pending }">
-        <input type="text" placeholder="Username" class="form-control" ngControl="username" [ngClass]="{ 'form-control-success': form.controls.username.valid, 'form-control-danger': ! form.controls.username.valid && form.controls.username.dirty && ! form.controls.username.pending }">
+        <input type="text" placeholder="Username" class="form-control" ngControl="username" [(ngModel)]="model.username" [ngClass]="{ 'form-control-success': form.controls.username.valid, 'form-control-danger': ! form.controls.username.valid && form.controls.username.dirty && ! form.controls.username.pending }">
         <div class="card m-t-2">
             <div class="card-block">
                 <h4 class="card-title">Username</h4>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="form-group row" [ngClass]="{ 'has-success': form.controls.email.valid, 'has-danger': ! form.controls.email.valid && form.controls.email.dirty && ! form.controls.email.pending }">
-        <input type="text" placeholder="Email" class="form-control" ngControl="email" [ngClass]="{ 'form-control-success': form.controls.email.valid, 'form-control-danger': ! form.controls.email.valid && form.controls.email.dirty && ! form.controls.email.pending }">
+        <input type="text" placeholder="Email" class="form-control" ngControl="email" [(ngModel)]="model.email" [ngClass]="{ 'form-control-success': form.controls.email.valid, 'form-control-danger': ! form.controls.email.valid && form.controls.email.dirty && ! form.controls.email.pending }">
         <ul class="list-group m-t-1" *ngIf="! form.controls.email.valid && form.controls.email.dirty">
             <li class="list-group-item text-primary" *ngIf="form.controls.email.pending"><i class="fa fa-spinner fa-pulse fa-fw"></i>Checking...</li>
             <li class="list-group-item text-danger" *ngIf="form.controls.email.errors?.required">You must provide an email.</li>
@@ -37,7 +37,7 @@
         </ul>
     </div>
     <div class="form-group row" [ngClass]="{ 'has-success': form.controls.password.valid, 'has-danger': ! form.controls.password.valid && form.controls.password.dirty }">
-        <input type="password" placeholder="Password" class="form-control" ngControl="password" [ngClass]="{ 'form-control-success': form.controls.password.valid, 'form-control-danger': ! form.controls.password.valid && form.controls.password.dirty }">
+        <input type="password" placeholder="Password" class="form-control" ngControl="password" [(ngModel)]="model.password" [ngClass]="{ 'form-control-success': form.controls.password.valid, 'form-control-danger': ! form.controls.password.valid && form.controls.password.dirty }">
         <ul class="list-group m-t-1" *ngIf="! form.controls.password.valid && form.controls.password.dirty">
             <li class="list-group-item text-danger" *ngIf="form.controls.password.errors?.required">You must provide a password.</li>
             <li class="list-group-item text-danger" *ngIf="form.controls.password.errors?.minlength">Your password must be at least {{ form.controls.password.errors.minlength.requiredLength }} characters.</li>
