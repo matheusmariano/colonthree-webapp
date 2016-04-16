@@ -3,6 +3,7 @@ import { RouteConfig, RouterOutlet } from 'angular2/router'
 
 import { IndexComponent } from './index/index.component'
 import { RegisterComponent } from './register/register.component'
+import { LoginComponent } from './login/login.component'
 
 @RouteConfig([
     {
@@ -15,6 +16,11 @@ import { RegisterComponent } from './register/register.component'
         name: 'Register',
         path: 'register',
         component: RegisterComponent,
+    },
+    {
+        name: 'Login',
+        path: 'login',
+        component: LoginComponent,
     },
 ])
 @Component({

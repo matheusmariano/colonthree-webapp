@@ -3,21 +3,21 @@ import { Component } from 'angular2/core'
 import { OnActivate, Router } from 'angular2/router'
 
 import { Navigable } from '../../../common/router/navigable'
-import { RegisterFormComponent } from './register-form.component'
+import { LoginFormComponent } from './login-form.component'
 
 @Component({
-    templateUrl: 'app/components/home/register/register.component.html',
-    directives: [RegisterFormComponent],
+    templateUrl: 'app/components/home/login/login.component.html',
     providers: [Title],
+    directives: [LoginFormComponent],
 })
-export class RegisterComponent implements OnActivate, Navigable {
+export class LoginComponent implements OnActivate, Navigable {
     constructor(
         private _title: Title,
         private _router: Router
     ) {}
 
     routerOnActivate() {
-        this._title.setTitle('Register - ColonThree')
+        this._title.setTitle('Login - ColonThree')
     }
 
     navigate(params) {
