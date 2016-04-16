@@ -2,7 +2,7 @@ import { Http, Headers, Response, RequestOptions } from 'angular2/http'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/Rx'
 
-import { Config } from '../../config'
+import { Config } from '../config'
 
 export abstract class HttpService {
     constructor(private _http: Http) {}

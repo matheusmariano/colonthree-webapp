@@ -1,8 +1,8 @@
 import { Injectable } from 'angular2/core'
 import { Http } from 'angular2/http'
 
-import { HttpService } from '../core/services/http.service'
-import { UniqueService } from '../core/validators/unique/unique.validator'
+import { HttpService } from '../../common/services/http.service'
+import { UniqueService } from '../../common/validators/unique/unique.validator'
 
 @Injectable()
 export class EmailService extends HttpService implements UniqueService {
@@ -13,6 +13,6 @@ export class EmailService extends HttpService implements UniqueService {
     getUnique(email: string) {
         let body: string = JSON.stringify({ email })
 
-        return this.post('/account/email', body)
+        return this.post('/user/email', body)
     }
 }

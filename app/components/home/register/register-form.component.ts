@@ -2,25 +2,25 @@ import { Component, OnInit } from 'angular2/core'
 import { ControlGroup, FormBuilder, Validators } from 'angular2/common'
 import { Router } from 'angular2/router'
 
-import { Validators as CtValidators } from '../../core/validators/validators'
-import { AccountService } from '../account.service'
-import { UsernameService } from '../username.service'
-import { EmailService } from '../email.service'
-import { CreateForm } from './create-form'
+import { Validators as CtValidators } from '../../../common/validators/validators'
+import { UserService } from '../../../services/user/user.service'
+import { UsernameService } from '../../../services/user/username.service'
+import { EmailService } from '../../../services/user/email.service'
+import { User } from '../../../services/user/user'
 
 @Component({
-    selector: 'ct-create-form',
-    templateUrl: 'app/account/create/create-form.component.html',
-    providers: [AccountService, UsernameService, EmailService],
+    selector: 'ct-register-form',
+    templateUrl: 'app/components/home/register/register-form.component.html',
+    providers: [UserService, UsernameService, EmailService],
 })
-export class CreateFormComponent implements OnInit {
+export class RegisterFormComponent implements OnInit {
     form: ControlGroup
-    model: CreateForm
+    model: User
 
     constructor(
         private _router: Router,
         private _formBuilder: FormBuilder,
-        private _accountService: AccountService,
+        private _accountService: UserService,
         private _usernameService: UsernameService,
         private _emailService: EmailService
     ) {}
@@ -39,12 +39,11 @@ export class CreateFormComponent implements OnInit {
     }
 
     private _initModel(): void {
-        this.model = {
-            name: '',
-            username: '',
-            email: '',
-            password: '',
-        }
+        this.model = new User()
+        this.model.name = ''
+        this.model.username = ''
+        this.model.email = ''
+        this.model.password = ''
     }
 
     private _applyValidators(): void {

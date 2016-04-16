@@ -2,13 +2,13 @@ import { Component } from 'angular2/core'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router'
 import { HTTP_PROVIDERS } from 'angular2/http'
 
-import { AccountComponent } from './account/account.component'
+import { HomeComponent } from './home/home.component'
 
 @RouteConfig([
     {
-        name: 'Account',
+        name: 'Home',
         path: '...',
-        component: AccountComponent,
+        component: HomeComponent,
         useAsDefault: true,
     },
 ])

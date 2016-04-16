@@ -2,5 +2,5 @@ typings/
 node_modules/
 *.js
 *.js.map
-app/config.ts
+app/common/config.ts
 .vscode/
