@@ -1,6 +1,11 @@
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
         <h2 class="text-muted text-xs-center p-b-2">Login</h2>
+        <div class="form-group row" *ngIf="alerts.success">
+            <div class="alert alert-success m-b-0">
+                {{ alerts.success }}
+            </div>
+        </div>
         <ct-login-form></ct-login-form>
         <div class="form-group row">
             <a class="btn btn-secondary-outline btn-lg btn-block" (click)="navigate(['Register'])">I don't have an account yet.</a>
