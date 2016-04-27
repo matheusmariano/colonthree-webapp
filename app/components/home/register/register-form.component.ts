@@ -3,7 +3,7 @@ import { ControlGroup, FormBuilder, Validators } from 'angular2/common'
 import { Router } from 'angular2/router'
 
 import { Validators as CtValidators } from '../../../common/validators/validators'
-import { SessionService } from '../../../common/services/session.service'
+import { StorageService } from '../../../common/services/storage.service'
 import { UserService } from '../../../services/user/user.service'
 import { UsernameService } from '../../../services/user/username.service'
 import { EmailService } from '../../../services/user/email.service'
@@ -12,7 +12,7 @@ import { User } from '../../../services/user/user'
 @Component({
     selector: 'ct-register-form',
     templateUrl: 'app/components/home/register/register-form.component.html',
-    providers: [SessionService, UserService, UsernameService, EmailService],
+    providers: [StorageService, UserService, UsernameService, EmailService],
 })
 export class RegisterFormComponent implements OnInit {
     form: ControlGroup
@@ -25,7 +25,7 @@ export class RegisterFormComponent implements OnInit {
     constructor(
         private _router: Router,
         private _formBuilder: FormBuilder,
-        private _sessionService: SessionService,
+        private _storageService: StorageService,
         private _userService: UserService,
         private _usernameService: UsernameService,
         private _emailService: EmailService
@@ -42,7 +42,10 @@ export class RegisterFormComponent implements OnInit {
         this._userService
             .store(this.model)
             .subscribe((response) => {
-                this._sessionService.flash('userCreated', true)
+                this._storageService
+                    .session()
+                    .flash('userCreated', true)
+                    
                 this._router.navigate(['Login'])
             }, (error) => {
                 this.register.pending = false

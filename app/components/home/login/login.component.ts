@@ -3,12 +3,12 @@ import { Component } from 'angular2/core'
 import { OnActivate, Router } from 'angular2/router'
 
 import { Navigable } from '../../../common/router/navigable'
-import { SessionService } from '../../../common/services/session.service'
+import { StorageService } from '../../../common/services/storage.service'
 import { LoginFormComponent } from './login-form.component'
 
 @Component({
     templateUrl: 'app/components/home/login/login.component.html',
-    providers: [Title, SessionService],
+    providers: [Title, StorageService],
     directives: [LoginFormComponent],
 })
 export class LoginComponent implements OnActivate, Navigable {
@@ -17,13 +17,13 @@ export class LoginComponent implements OnActivate, Navigable {
     constructor(
         private _title: Title,
         private _router: Router,
-        private _sessionService: SessionService
+        private _storageService: StorageService
     ) {}
 
     routerOnActivate() {
         this._title.setTitle('Login - ColonThree')
 
-        if (this._sessionService.get('userCreated')) {
+        if (this._storageService.session().get('userCreated')) {
             this.alerts.success = 'Registered successfully! Try to login now.'
         }
     }

@@ -1,16 +1,30 @@
 import { Injectable } from 'angular2/core'
 
 @Injectable()
-export class SessionService {
+export class StorageService {
     private _data: { meta: { [key: string]: any }, body: any } = {
         meta: {},
         body: ''
     }
 
-    get(key: string): any {
-        this._data = JSON.parse(window.sessionStorage.getItem(key))
+    private _storage
 
-        if (! this._valid()) {
+    local() {
+        this._storage = window.localStorage
+
+        return this
+    }
+
+    session() {
+        this._storage = window.sessionStorage
+
+        return this
+    }
+
+    get(key: string): any {
+        this._data = JSON.parse(this._storage.getItem(key))
+
+        if (!this._valid()) {
             return undefined
         }
 
@@ -26,7 +40,7 @@ export class SessionService {
 
         let data: string = JSON.stringify(this._data)
 
-        window.sessionStorage.setItem(key, data)
+        this._storage.setItem(key, data)
     }
 
     flash(key: string, value: any): void {
@@ -36,7 +50,7 @@ export class SessionService {
     }
 
     remove(key: string): void {
-        window.sessionStorage.removeItem(key)
+        this._storage.removeItem(key)
     }
 
     private _valid(): boolean {
