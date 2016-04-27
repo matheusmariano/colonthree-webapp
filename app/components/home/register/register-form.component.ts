@@ -26,7 +26,7 @@ export class RegisterFormComponent implements OnInit {
         private _router: Router,
         private _formBuilder: FormBuilder,
         private _sessionService: SessionService,
-        private _accountService: UserService,
+        private _userService: UserService,
         private _usernameService: UsernameService,
         private _emailService: EmailService
     ) {}
@@ -39,7 +39,7 @@ export class RegisterFormComponent implements OnInit {
     submit(): void {
         this.register.pending = true
 
-        this._accountService
+        this._userService
             .store(this.model)
             .subscribe((response) => {
                 this._sessionService.flash('userCreated', true)
